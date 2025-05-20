@@ -27,7 +27,7 @@ data "azurerm_resource_group" "this" {
 
 
 resource "azurerm_storage_account" "this" {
-  name                     = "${var.project_name}20240520"
+  name                     = "${var.project_name}20250520"
   resource_group_name      = data.azurerm_resource_group.this.name
   location                 = data.azurerm_resource_group.this.location
   account_tier             = "Standard"
@@ -35,7 +35,7 @@ resource "azurerm_storage_account" "this" {
 }
 
 resource "azurerm_service_plan" "this" {
-  name                =  "${var.project_name}-20240520"
+  name                =  "${var.project_name}-20250520"
   resource_group_name = data.azurerm_resource_group.this.name
   location            = data.azurerm_resource_group.this.location
   sku_name            = "Y1"
