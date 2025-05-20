@@ -31,14 +31,8 @@ jobs:
       #   shell: bash
 
 
-      - name: Debug Environment Variables
-        run: |
-          echo "Checking ARM_* environment variables after Azure Login:"
-          echo "ARM_CLIENT_ID: $ARM_CLIENT_ID"
-          echo "ARM_CLIENT_SECRET: $ARM_CLIENT_SECRET"
-          echo "ARM_SUBSCRIPTION_ID: $ARM_SUBSCRIPTION_ID"
-          echo "ARM_TENANT_ID: $ARM_TENANT_ID"
-        shell: bash
+      - name: Azure test
+        run: az resource list
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
