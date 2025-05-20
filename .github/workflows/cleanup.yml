@@ -1,0 +1,36 @@
+name: Infra Cleanup
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cleanup:
+    name: 'Cleanup'
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: iac
+
+    steps:
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          enable-AzPSSession: true
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.11.4
+      
+      - name: Remove Function
+        run: |
+          zip -r azure-function-remove.zip function_app_remove.py
+          az functionapp deployment source config-zip --resource-group zelabs --name zelabs --src azure-function-remove.zip --build-remote true
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve
