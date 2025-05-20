@@ -22,7 +22,6 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           enable-AzPSSession: true
 
-
       - name: Extract Azure Credentials for Terraform
         run: |
           CLIENT_ID=$(echo '${{ secrets.AZURE_CREDENTIALS }}' | jq -r '.clientId')
@@ -34,17 +33,6 @@ jobs:
           echo "ARM_CLIENT_SECRET=$CLIENT_SECRET" >> $GITHUB_ENV
           echo "ARM_SUBSCRIPTION_ID=$SUBSCRIPTION_ID" >> $GITHUB_ENV
           echo "ARM_TENANT_ID=$TENANT_ID" >> $GITHUB_ENV
-        shell: bash 
-
-      - name: Debug Environment Variables (after direct extraction)
-        run: |
-          echo "Checking ARM_* environment variables after direct extraction:"
-          echo "ARM_CLIENT_ID: $ARM_CLIENT_ID"
-          echo "ARM_CLIENT_SECRET: (Set if valid, not displayed for security)" # Este valor estará realmente setado
-          echo "ARM_SUBSCRIPTION_ID: $ARM_SUBSCRIPTION_ID"
-          echo "ARM_TENANT_ID: $ARM_TENANT_ID"
-        shell: bash
-
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
@@ -62,7 +50,6 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
-
 
   deploy:
     name: 'Deploy'

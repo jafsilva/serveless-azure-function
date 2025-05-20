@@ -19,9 +19,9 @@ def home(req: func.HttpRequest) -> func.HttpResponse:
             name = req_body.get('name')
 
     if name:
-        return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully.\nHora atual: {data_hora_atual}")
+        return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully.\nCurrent time: {data_hora_atual}")
     else:
         return func.HttpResponse(
-             f"This HTTP triggered function executed successfully.\nHora atual: {data_hora_atual}",
+             f"This HTTP triggered function executed successfully.\nCurrent time: {data_hora_atual}",
              status_code=200
         )
