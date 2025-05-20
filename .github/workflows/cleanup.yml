@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       - name: Azure Login
         uses: azure/login@v2
         with:
@@ -41,6 +41,7 @@ jobs:
       
       - name: Remove Function
         run: |
+          touch function_app_remove.py
           zip -r azure-function-remove.zip function_app_remove.py
           az functionapp deployment source config-zip --resource-group zelabs --name zelabs --src azure-function-remove.zip --build-remote true
 
