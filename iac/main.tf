@@ -58,9 +58,6 @@ resource "azurerm_linux_function_app" "this" {
   app_settings = {
     "FUNCTIONS_WORKER_RUNTIME" = "python"
   }
-  lifecycle {
-    prevent_destroy = false
-  }
 }
 
 variable "project_name" {
