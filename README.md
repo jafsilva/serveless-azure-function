@@ -1,6 +1,6 @@
 # Pipeline Serveless AWS Lambda
 
-Projeto para o artigo: [Parte 2: Deploy Serverless com Azure Function usando GitHub Actions e Terraform](https://www.linkedin.com/pulse/parte-1-deploy-serverless-com-aws-lambda-usando-github-jos%C3%A9-aparecido-df9vf)
+Projeto para o artigo: [Parte 2: Deploy Serverless com Azure Function usando GitHub Actions e Terraform](https://www.linkedin.com/pulse/parte-2-deploy-serverless-com-azure-function-usando-github-aparecido-ekc5f)
 
 ---
 
