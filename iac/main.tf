@@ -7,9 +7,9 @@ terraform {
   }
 
   backend "azurerm" {
-    resource_group_name  = "zelabs"
-    storage_account_name = "zelabstfstate"
-    container_name       = "tfstate"
+    resource_group_name  = "zelabs" # Substituir por resource group existente
+    storage_account_name = "storageaccountname" # Substituir por storage account existente
+    container_name       = "tfstate" # Substituir por container em um storage account existente
     key                  = "serveless-azure-function.tfstate"
   }
 
